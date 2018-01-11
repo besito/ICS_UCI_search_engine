@@ -316,19 +316,14 @@ def main():
     N = len(indexed_files)
     print "total indexed files:", N
     print "vocabulary size: ", len(main_ind.keys())
-    print 
-    print
-
+    
     #5) pre-compute TF-IDF as an index and save it to a file
     #tf_idf_dict = indexer.TF_IDF(main_ind, N)
     
     #6) load TF-IDF from file to a dictionary
-    print "loading pre computed TF-IDF ....."
+    print "\n\nloading pre computed TF-IDF ....."
     tfidf_ind = load_pickle("final_tfidf_index.pkl")
-    print
-    print "READY!"
-    print
-    print
+    print "\nREADY!\n\n"
     query = ""
     while True:
         query = raw_input("Search for: ")
@@ -350,13 +345,9 @@ def main():
             ideal_dcg.append(ideal_dcg[len(ideal_dcg)-1])
         start2 = timeit.default_timer()
         preprocessed_query = query_preprocessing(query)
-        print "preprocessed query: ", preprocessed_query
-        print
-        print "ICS Search Engine - WELCOME!"
-        print
-        print
-        print "ICS-Search Engine Results:"
-        print
+        print "\npreprocessed query: ", preprocessed_query
+        print "\nICS Search Engine - WELCOME!"
+        print "\n\n\nICS-Search Engine Results:"
         if len(preprocessed_query) == 1:
             #the case of a single-term query
             actual_ranking_list,relevance_dict = single_word_query(preprocessed_query[0], main_ind, filename_to_url_dict, tfidf_ind,ideal_relevance_dict)
